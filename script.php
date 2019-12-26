@@ -34,7 +34,7 @@ foreach($upstreams as $num => $row) {
 		$row = str_replace(".query", ".query.consul", $row);
 		$mass_appstream_d[$arr[$num][0]] = set_resolv($row);
 	}
-  
+
  }
 
 }
@@ -42,12 +42,12 @@ foreach($upstreams as $num => $row) {
 
 
 foreach ($lines as $line_num => $line) {
- $arr[$line_num] = explode("|",$line);    
+ $arr[$line_num] = explode("|",$line);
  $arr_mass = explode(" ",$arr[$line_num][0]);
  $arr[$line_num][1] = explode(";", $arr[$line_num][1]);
 
 $mass_arr[$line_num]['location']=str_replace("location ","",$arr[$line_num][0]);
- $arr[$line_num]['proxy_pass'] = explode ("http://", $arr[$line_num][1][0]); 
+ $arr[$line_num]['proxy_pass'] = explode ("http://", $arr[$line_num][1][0]);
  foreach ($arr[$line_num]['proxy_pass'] as $row){
 	#if (!$row!="proxy_pass"){
 	if (!stripos($row,"proxy_pass")){
@@ -67,17 +67,12 @@ foreach ($arr[$line_num][1] as $row){
     $mass_arr[$line_num]["allow"][]=$row;
   }
  }
- 
- 
- //$arr[$line_num]['allow'] = explode (" ", $arr[$line_num][1][1]); 
+
+
+
 }
 
-//print_r($mass_appstream['wmcasino']);
 
-//print_r($mass_arr);
 print_r($mass_arr);
 
-
-//print_r($arr[44]);
-//print_r(set_resolv('http-stage.mobilots.query.consul'))
 ?>
